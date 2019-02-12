@@ -13,5 +13,8 @@ namespace ZnamkyLibrary
         public int Value { get; set; }
         public int Weight { get; set; }
         public string Comment { get; set; }
+        public Mark()
+        {
+        }
     }
 }

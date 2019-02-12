@@ -8,13 +8,25 @@ namespace ZnamkyLibrary
 {
     class SQLHandler
     {
-        public void DatabaseCreation()
+        private string dbName = "Marks";
+        public SQLHandler()
         {
-            // Get an absolute path to the database file
-            var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Marks.db");
+            DbCreation();
+        }
+        public void DbCreation()
+        {
+            var conn = new SQLiteAsyncConnection(dbName);
+            conn.CreateTableAsync<Mark>();
+        }
 
-            var db = new SQLiteConnection(databasePath);
-            db.CreateTable<Mark>();
+        public bool InsertRow(Mark mark)
+        {
+            var conn = new SQLiteAsyncConnection(dbName);
+            conn.InsertAsync(mark).ContinueWith((t) =>
+            {
+                return true;
+            });
+            return false;
         }
         
     }
