@@ -8,7 +8,7 @@ namespace ZnamkyLibrary
 {
     class SQLHandler
     {
-        string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Marks.db");
+        string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Marks.db");
 
         public SQLHandler()
         {
