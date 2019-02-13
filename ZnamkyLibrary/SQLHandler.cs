@@ -8,26 +8,39 @@ namespace ZnamkyLibrary
 {
     class SQLHandler
     {
-        private string dbName = "Marks";
+        string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "Marks.db");
+
         public SQLHandler()
         {
             DbCreation();
         }
+
         public void DbCreation()
         {
-            var conn = new SQLiteAsyncConnection(dbName);
-            conn.CreateTableAsync<Mark>();
+            var db = new SQLiteConnection(databasePath);
+            db.CreateTable<Mark>();
         }
 
-        public bool InsertRow(Mark mark)
+        public List<Mark> GetMarksFromDb()
         {
-            var conn = new SQLiteAsyncConnection(dbName);
-            conn.InsertAsync(mark).ContinueWith((t) =>
-            {
-                return true;
-            });
-            return false;
+            var db = new SQLiteConnection(databasePath);
+            var query = db.Table<Mark>();
+            List<Mark> results = query.ToList();
+            return results;
         }
-        
+
+        public void AddMark(string subject, int value, int weight, string comment)
+        {
+            var db = new SQLiteConnection(databasePath);
+            var mark = new Mark()
+            {
+                Subject = subject,
+                Value = value,
+                Weight = weight,
+                Comment = comment
+            };
+            db.Insert(mark);
+        }
+
     }
 }

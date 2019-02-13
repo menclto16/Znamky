@@ -4,13 +4,19 @@ using System.Text;
 
 namespace ZnamkyLibrary
 {
-    class MarkHandler
+    public class MarkHandler
     {
         private SQLHandler sqlHandler = new SQLHandler();
+        public List<Mark> Marks = new List<Mark>();
 
         public List<Mark> GetMarks() {
+            return sqlHandler.GetMarksFromDb(); 
+        }
 
-            return; 
+        public bool InsertMark(string subject, int value, int weight, string comment)
+        {
+            sqlHandler.AddMark(subject, value, weight, comment);
+            return true;
         }
     }
 }

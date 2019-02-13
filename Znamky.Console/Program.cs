@@ -11,7 +11,9 @@ namespace Znamky.Console
     {
         static void Main(string[] args)
         {
-            Mark mark = new Mark();
+            AppClass appClass = new AppClass();
+            appClass.MainMenu();
+            
         }
     }
 }
