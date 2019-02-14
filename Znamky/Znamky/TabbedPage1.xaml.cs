@@ -13,18 +13,18 @@ namespace Znamky
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class TabbedPage1 : TabbedPage
     {
-        ContentPage AddMarkPage = new AddMark();
         ContentPage MarkListPage = new MarkList();
+        ContentPage AddMarkPage = new AddMark();
+        ContentPage AddSubjectPage = new AddSubject();
         public TabbedPage1 ()
         {
             InitializeComponent();
-            AddMarkPage.Title = "Add Mark";
             MarkListPage.Title = "Marks";
-            this.Children.Add(MarkListPage);
-            this.Children.Add(AddMarkPage);
-        }
-
-        public void RefreshPage(object sender, EventArgs e) {
+            AddMarkPage.Title = "Add Mark";
+            AddSubjectPage.Title = "Add subject";
+            Children.Add(MarkListPage);
+            Children.Add(AddMarkPage);
+            Children.Add(AddSubjectPage);
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,14 +15,22 @@ namespace Znamky
 	public partial class MarkList : ContentPage
 	{
         MarkHandler MarkHandlerClass = new MarkHandler();
-        List<Mark> Marks = new List<Mark>();
+        ObservableCollection<Mark> Marks = new ObservableCollection<Mark>();
         public MarkList()
 		{
 			InitializeComponent();
 
-            Marks = MarkHandlerClass.GetMarks();
+            Marks = new ObservableCollection<Mark>(MarkHandlerClass.GetMarks());
 
             MarkListView.ItemsSource = Marks;
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            Marks.Clear();
+            List<Mark> marksList = MarkHandlerClass.GetMarks();
+            foreach (var mark in marksList) Marks.Add(mark);
         }
 	}
 }

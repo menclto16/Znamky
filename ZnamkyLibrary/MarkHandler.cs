@@ -12,10 +12,18 @@ namespace ZnamkyLibrary
         public List<Mark> GetMarks() {
             return sqlHandler.GetMarksFromDb(); 
         }
-
+        public List<Subject> GetSubjects()
+        {
+            return sqlHandler.GetSubjectsFromDb();
+        }
         public bool InsertMark(string subject, int value, int weight, string comment)
         {
             sqlHandler.AddMark(subject, value, weight, comment);
+            return true;
+        }
+        public bool InsertSubject(string name)
+        {
+            sqlHandler.AddSubject(name);
             return true;
         }
     }

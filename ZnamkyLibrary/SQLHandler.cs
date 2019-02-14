@@ -8,30 +8,35 @@ namespace ZnamkyLibrary
 {
     class SQLHandler
     {
-        string databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Marks.db");
+        private string marksDatabasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "Marks.db");
 
         public SQLHandler()
         {
             DbCreation();
         }
-
         public void DbCreation()
         {
-            var db = new SQLiteConnection(databasePath);
+            var db = new SQLiteConnection(marksDatabasePath);
             db.CreateTable<Mark>();
+            db.CreateTable<Subject>();
         }
-
         public List<Mark> GetMarksFromDb()
         {
-            var db = new SQLiteConnection(databasePath);
+            var db = new SQLiteConnection(marksDatabasePath);
             var query = db.Table<Mark>();
             List<Mark> results = query.ToList();
             return results;
         }
-
+        public List<Subject> GetSubjectsFromDb()
+        {
+            var db = new SQLiteConnection(marksDatabasePath);
+            var query = db.Table<Subject>();
+            List<Subject> results = query.ToList();
+            return results;
+        }
         public void AddMark(string subject, int value, int weight, string comment)
         {
-            var db = new SQLiteConnection(databasePath);
+            var db = new SQLiteConnection(marksDatabasePath);
             var mark = new Mark()
             {
                 Subject = subject,
@@ -41,6 +46,14 @@ namespace ZnamkyLibrary
             };
             db.Insert(mark);
         }
-
+        public void AddSubject(string name)
+        {
+            var db = new SQLiteConnection(marksDatabasePath);
+            var subject = new Subject()
+            {
+                Name = name
+            };
+            db.Insert(subject);
+        }
     }
 }

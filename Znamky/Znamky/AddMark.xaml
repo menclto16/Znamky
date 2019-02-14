@@ -4,7 +4,7 @@
              x:Class="Znamky.AddMark">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Entry x:Name="Subject" Completed="InsertMark"></Entry>
+            <Picker x:Name="SubjectPicker"/>
             <Entry x:Name="Mark" Completed="InsertMark"></Entry>
             <Entry x:Name="Weight" Completed="InsertMark"></Entry>
             <Entry x:Name="Comment" Completed="InsertMark"></Entry>

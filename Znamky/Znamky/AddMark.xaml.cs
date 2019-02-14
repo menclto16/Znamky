@@ -14,16 +14,21 @@ namespace Znamky
 	public partial class AddMark : ContentPage
 	{
         MarkHandler MarkHandlerClass = new MarkHandler();
-        List<Mark> Marks = new List<Mark>();
+        List<Subject> Subjects = new List<Subject>();
         public AddMark()
 		{
 			InitializeComponent();
 		}
         public void InsertMark(object sender, EventArgs e)
         {
-            MarkHandlerClass.InsertMark(Subject.Text, Int32.Parse(Mark.Text), Int32.Parse(Weight.Text), Comment.Text);
-            
-            Marks = MarkHandlerClass.GetMarks();
+            MarkHandlerClass.InsertMark(SubjectPicker.SelectedItem.ToString(), Int32.Parse(Mark.Text), Int32.Parse(Weight.Text), Comment.Text);
+        }
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            SubjectPicker.Items.Clear();
+            Subjects = MarkHandlerClass.GetSubjects();
+            foreach (var subject in Subjects) SubjectPicker.Items.Add(subject.Name);
         }
     }
 }
