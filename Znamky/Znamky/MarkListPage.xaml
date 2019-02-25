@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Znamky.MarkListPage">
+    <ListView x:Name="MarkListView"
+                        IsGroupingEnabled="true"
+                        GroupDisplayBinding="{ Binding Heading }"
+                        GroupShortNameBinding ="{ Binding SubjectShortName }">
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Orientation="Vertical" BackgroundColor="#ededed" Padding="5, 0, 5, 0">
+                        <Label Text="{Binding Value}" FontSize="16" TextColor="#ff0000" VerticalOptions="CenterAndExpand" />
+                        <StackLayout Orientation="Horizontal" VerticalOptions="End">
+                            <Label Text="Weight: " FontSize="12" TextColor="#adadad"/>
+                            <Label Text="{Binding Weight}" FontSize="12" TextColor="#adadad"/>
+                            <Label Text="{Binding Comment}" FontSize="12" HorizontalOptions="EndAndExpand" TextColor="#2cbc00"/>
+                        </StackLayout>
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
+</ContentPage>

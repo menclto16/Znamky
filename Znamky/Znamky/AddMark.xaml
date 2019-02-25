@@ -4,10 +4,11 @@
              x:Class="Znamky.AddMark">
     <ContentPage.Content>
         <StackLayout Orientation="Vertical">
-            <Picker x:Name="SubjectPicker"/>
-            <Entry x:Name="Mark" Completed="InsertMark"></Entry>
-            <Entry x:Name="Weight" Completed="InsertMark"></Entry>
-            <Entry x:Name="Comment" Completed="InsertMark"></Entry>
+            <Picker x:Name="SubjectPicker" Title="Select subject"/>
+            <Picker x:Name="MarkPicker" Title="Select mark"/>
+            <Picker x:Name="WeightPicker" Title="Select weight"/>
+            <Entry x:Name="Comment" Completed="InsertMark" Placeholder="Comment..."></Entry>
+            <Button Text="Add mark" Clicked="InsertMark"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

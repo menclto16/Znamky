@@ -10,11 +10,20 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.5.0.129452" />
+    <PackageReference Include="Xamarin.Forms" Version="3.5.0.169047" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\..\ZnamkyLibrary\ZnamkyLibrary.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="MarkListPage.xaml.cs">
+      <DependentUpon>MarkListPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="MainTabbedPage.xaml.cs">
+      <DependentUpon>MainTabbedPage.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -24,10 +33,10 @@
     <EmbeddedResource Update="AddSubject.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="MarkList.xaml">
+    <EmbeddedResource Update="MarkListPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="TabbedPage1.xaml">
+    <EmbeddedResource Update="MainTabbedPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

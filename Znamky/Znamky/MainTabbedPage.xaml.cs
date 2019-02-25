@@ -11,12 +11,12 @@ using ZnamkyLibrary;
 namespace Znamky
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class TabbedPage1 : TabbedPage
+    public partial class MainTabbedPage : TabbedPage
     {
-        ContentPage MarkListPage = new MarkList();
+        ContentPage MarkListPage = new MarkListPage();
         ContentPage AddMarkPage = new AddMark();
         ContentPage AddSubjectPage = new AddSubject();
-        public TabbedPage1 ()
+        public MainTabbedPage()
         {
             InitializeComponent();
             MarkListPage.Title = "Marks";

@@ -5,6 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Entry x:Name="SubjectEntry" Placeholder="Subject name..." Completed="AddSubjectInputCompleted"></Entry>
+            <Button Text="Add subject" Clicked="AddSubjectInputCompleted"></Button>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

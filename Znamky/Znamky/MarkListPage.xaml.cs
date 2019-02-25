@@ -12,25 +12,27 @@ using ZnamkyLibrary;
 namespace Znamky
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class MarkList : ContentPage
+	public partial class MarkListPage : ContentPage
 	{
         MarkHandler MarkHandlerClass = new MarkHandler();
-        ObservableCollection<Mark> Marks = new ObservableCollection<Mark>();
-        public MarkList()
+        private ObservableCollection<MarkGroup> groupedMarks { get; set; }
+        public MarkListPage()
 		{
 			InitializeComponent();
 
-            Marks = new ObservableCollection<Mark>(MarkHandlerClass.GetMarks());
+            groupedMarks = new ObservableCollection<MarkGroup>(MarkHandlerClass.GetGroupedMarks());
 
-            MarkListView.ItemsSource = Marks;
+            MarkListView.ItemsSource = groupedMarks;
         }
 
         protected override void OnAppearing()
         {
             base.OnAppearing();
-            Marks.Clear();
-            List<Mark> marksList = MarkHandlerClass.GetMarks();
-            foreach (var mark in marksList) Marks.Add(mark);
+            groupedMarks.Clear();
+            foreach (var item in MarkHandlerClass.GetGroupedMarks())
+            {
+                groupedMarks.Add(item);
+            }
         }
 	}
 }

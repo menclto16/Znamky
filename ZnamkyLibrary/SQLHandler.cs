@@ -20,12 +20,21 @@ namespace ZnamkyLibrary
             db.CreateTable<Mark>();
             db.CreateTable<Subject>();
         }
-        public List<Mark> GetMarksFromDb()
+        public List<Mark> GetMarksFromDb(string subject = "")
         {
             var db = new SQLiteConnection(marksDatabasePath);
-            var query = db.Table<Mark>();
-            List<Mark> results = query.ToList();
-            return results;
+            if (subject != "")
+            {
+                var query = db.Table<Mark>().Where(v => v.Subject.Contains(subject));
+                List<Mark> results = query.ToList();
+                return results;
+            }
+            else
+            {
+                var query = db.Table<Mark>();
+                List<Mark> results = query.ToList();
+                return results;
+            }
         }
         public List<Subject> GetSubjectsFromDb()
         {
@@ -53,7 +62,13 @@ namespace ZnamkyLibrary
             {
                 Name = name
             };
-            db.Insert(subject);
+            try
+            {
+                db.Insert(subject);
+            }
+            catch (Exception)
+            {
+            }
         }
     }
 }

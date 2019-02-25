@@ -2,6 +2,6 @@
 <TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
             xmlns:mypages="clr-namespace:Znamky;assembly=Znamky"
-             x:Class="Znamky.TabbedPage1">
+             x:Class="Znamky.MainTabbedPage">
   <!--Pages can be added as references or inline-->
 </TabbedPage>

@@ -11,7 +11,7 @@ namespace Znamky
         {
             InitializeComponent();
 
-            MainPage = new TabbedPage1();
+            MainPage = new MainTabbedPage();
         }
 
         protected override void OnStart()

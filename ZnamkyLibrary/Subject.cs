@@ -7,8 +7,7 @@ namespace ZnamkyLibrary
 {
     public class Subject
     {
-        [PrimaryKey, AutoIncrement]
-        public int ID { get; set; }
+        [PrimaryKey]
         public string Name { get; set; }
     }
 }
